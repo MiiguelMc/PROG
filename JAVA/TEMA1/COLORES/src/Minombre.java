@@ -5,10 +5,7 @@ public class Minombre {
         int  linea = Integer.parseInt(System.console().readLine());
         int delegado = Integer.parseInt(System.console().readLine());
         System.out.println("estes es la suma de los numeros  $ " +(linea + delegado ) );
-
-        int precioTotalVenta
         
-
     }
 }
 //Miguel Macias del Pino//
