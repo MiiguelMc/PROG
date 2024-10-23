@@ -66,7 +66,7 @@ public class App {
               System.out.println(
                             "----------------------------------------------------------------------------------------------");
               // Aqui empezamos con los subtotal e impuestos
-              System.out.printf("%-19s %19s %19.2s $%-19.2f\n", "Subtotal:", " ", " ",tSinImpuestos);
+              System.out.printf("%-19s %19s %19.2s $%-19.2f\n", "Subtotal:", " ", " ", tSinImpuestos);
               System.out.printf("%-19s %19s %19.2s $%-19.2f\n", "Impuesto (%18) :", " ", " ", Impuesto);
               System.out.printf("%-19s %19s %19.2s $%-19.2f\n", "Descuento (%10) :", " ", " ", descuento);
               System.out.println(

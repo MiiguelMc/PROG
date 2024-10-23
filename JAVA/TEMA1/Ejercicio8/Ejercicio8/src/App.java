@@ -21,16 +21,16 @@ public class App {
         //Precio Total IVA * totalSIm
         total = TotalSIm + iva;
         System.out.println("┌───────────────────┬───────────────────┐");
-        System.out.printf("│%-19s│%19.10s│\n" , "cliente" , nombre);
+        System.out.printf("│%-19s│%19.10s│\n" , "Cliente" , nombre);
         System.out.printf("│%-19s│%19.10s│\n" ,"Producto" , articulo);
         System.out.printf("│%-19s│%19d│\n" ,"Cantidad", cantidad);
         System.out.printf("│%-19s│%19.2f│\n","Precio Unitario", + coste);
         System.out.printf("│%-19s│%19.2f│\n", "Total sin Impuesto" , + TotalSIm);
-        System.out.println("│───────────────────│───────────────────│");
+        System.out.println("│───────────────────┼───────────────────│");
         System.out.printf("│%-19s│%19.2f│\n" ,"IVA", iva);
-        System.out.println("│───────────────────│───────────────────│");
+        System.out.println("│───────────────────┼───────────────────│");
         System.out.printf("│%-19s│%19.2f│\n" ,"Precio con impuesto", total);
-        System.out.println("│───────────────────────────────────────│");
+        System.out.println("└───────────────────────────────────────┘");
 
     }
 }
