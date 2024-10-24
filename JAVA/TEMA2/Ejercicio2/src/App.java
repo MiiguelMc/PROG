@@ -1,6 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        int puntos = 0 ; 
+        int puntos = 0;
         System.out.println("Tipo Test");
         System.out.println("Vamos a ver tus conocimientos");
         System.out.println("¿Que prefieres?");

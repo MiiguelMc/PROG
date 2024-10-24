@@ -98,7 +98,7 @@ public class App {
                 break;
             case ("noviembre"):
                 if (dia >= 1 && dia <= 21)
-                    System.out.println("Escorpion");
+                    System.out.println("Escorpio");
                 else if (dia >= 22 && dia <= 30) {
                     System.out.println("Sagitario");
                 } else {

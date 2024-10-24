@@ -12,22 +12,22 @@ public class App {
         if (10 < nota1 || 10 < nota2 || 10 < nota3 || 0 < nota1 || 0 < nota2 || 0 < nota3) {
             System.out.println("Error has introducido un numero superior a 10");
         } else {
-            
+
             System.out.println("Tu nota Media es: " + notamedia);
 
         }
-        if (5>notamedia) {
+        if (5 > notamedia) {
             System.out.println("Tu notas es insuficiente boletín");
-        } else if (5==notamedia) {
+        } else if (5 == notamedia) {
             System.out.println("Tu nota Media es Suficiente boletín");
-        } else if (6==notamedia ) {
+        } else if (6 == notamedia) {
             System.out.println("Tu nota Media es Bien en el boletín");
-        } else if (notamedia == 7 && notamedia == 8  ) {
+        } else if (notamedia == 7 && notamedia == 8) {
             System.out.println("Tu nota Notable es Bien en el boletín");
         } else if (notamedia == 9 && notamedia == 10) {
             System.out.println("Tu nota Sobresaliente es Bien en el boletín");
-            
-        }
 
         }
-        }
+
+    }
+}
