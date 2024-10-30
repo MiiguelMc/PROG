@@ -14,7 +14,7 @@ public class App {
         double escudo = (2.5);
         Double gastosenvio = (3.25);
         double Total = (precio + gastosenvio);
-        //facturas
+        // facturas
         System.out.printf("Bandera de %10.2f cm: %10.2f $ \n", area, precio);
         if (bordado.equals("s")) {
             double Totalescudo = (precio + escudo + gastosenvio);
