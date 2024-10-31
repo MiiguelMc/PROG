@@ -54,7 +54,7 @@ public class App {
                 System.out.printf("cod promocional (%5s)    %5.2f\n",codPromocional,(0.5*total));
                 break;
             default: 
-                System.out.println("Error en los codigos promocionales");
+                System.out.println("Error en los codigos promocionales , no has indicado el codigo correcto");
                 break;
         }
         System.out.printf("total %10.2f", total);
