@@ -6,12 +6,9 @@ public class App {
             if (cod == 444) {
                 a = a + 4;
                 System.out.println("La caja fuerte se ha abierto satisfactoriamente");
-
             } else {
                 System.out.println("Lo siento, esa no es la combinación");
-
             }
-
         }
     }
 }
