@@ -1,4 +1,4 @@
-import Matematica.Pegar.pegarpordelante;
+//import Matematica.Pegar.pegarpordelante;
 
 public class Matematica {
     public static void main(String[] args) throws Exception {
