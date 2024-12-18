@@ -4,7 +4,6 @@ public class Caballo {
     String raza;
     String color;
     int edad;
-
     Caballo(String nombre, String raza, String color, int edad) {
         this.nombre = nombre;
         this.raza = raza;
@@ -19,7 +18,8 @@ public class Caballo {
         System.out.println("El animalito tiene " + edad + " años de edad");
 
     }
-//Aqui tenemos el metodo para las excepciones 
+
+    // Aqui tenemos el metodo para las excepciones
     public static int pidenter() {
         boolean maledad = true;
         int Mienter = 0;
@@ -33,11 +33,14 @@ public class Caballo {
         }
         return Mienter;
     }
-// Aqui tenemos para que nos devuelva el valor de razas es importante si raza es privado
+
+    // Aqui tenemos para que nos devuelva el valor de razas es importante si raza es
+    // privado
     public String getraza() {
         return this.raza;
     }
-    public void setraza(String raza){
-        this.raza = raza ;
+
+    public void setraza(String raza) {
+        this.raza = raza;
     }
 }
