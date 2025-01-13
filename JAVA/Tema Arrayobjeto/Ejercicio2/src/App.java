@@ -13,9 +13,9 @@ public class App {
             num = Integer.parseInt(System.console().readLine());
             switch (num) {
                 case 1:
-                    int j = Funciones.Ultimonumero(producto);
+                    //int j = Funciones.Ultimonumero(producto);
                     int k = 0;
-                    while (k < producto.length) {
+                    while (k <= producto.length && producto[k] != null) {
                         System.out.println(producto[k].toString());
                         k++;
                     }

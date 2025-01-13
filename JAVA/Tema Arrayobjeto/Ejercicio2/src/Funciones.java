@@ -20,6 +20,6 @@ public class Funciones {
         while (i < articulo.length && articulo[i] != null) {
            i++; 
         }
-                return i+1;
+                return i;
     }
 }
