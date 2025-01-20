@@ -1,11 +1,11 @@
 public class Articulo {
-    int codigo;
+    String codigo;
     String descripcion;
     double preciocompra;
     double precioventa;
     int stock;
 
-    Articulo(String descripcion, int codigo, double preciocompra, double precioventa, int stock) {
+    Articulo(String descripcion, String codigo, double preciocompra, double precioventa, int stock) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.preciocompra = preciocompra;
@@ -13,11 +13,11 @@ public class Articulo {
         this.stock = stock;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 

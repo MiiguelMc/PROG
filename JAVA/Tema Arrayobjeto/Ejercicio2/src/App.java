@@ -13,7 +13,6 @@ public class App {
             num = Integer.parseInt(System.console().readLine());
             switch (num) {
                 case 1:
-                    //int j = Funciones.Ultimonumero(producto);
                     int k = 0;
                     while (k <= producto.length && producto[k] != null) {
                         System.out.println(producto[k].toString());
@@ -30,23 +29,11 @@ public class App {
                     break;
 
                 case 4:
-
+                    Funciones.ModificarArticulo(producto);
                     break;
 
                 case 5:
-                    int i = Funciones.Ultimonumero(producto);
-                    System.out.println("Introduce el codigo del producto");
-                    int cod = Integer.parseInt(System.console().readLine());
-                    System.out.println("Dime la descripcion");
-                    String dep = System.console().readLine();
-                    System.out.println("Precio de Venta ");
-                    int PVenta = Integer.parseInt(System.console().readLine());
-                    System.out.println("Precio de Compra ");
-                    int PCompra = Integer.parseInt(System.console().readLine());
-                    System.out.println("Stock");
-                    int Stock = Integer.parseInt(System.console().readLine());
-                    producto[i] = new Articulo(dep, cod, PCompra, PVenta, Stock);
-
+                Funciones.Entrada(producto);
                     break;
 
                 case 6:
