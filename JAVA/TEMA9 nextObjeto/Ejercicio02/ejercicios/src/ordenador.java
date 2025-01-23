@@ -14,12 +14,12 @@ public class ordenador extends Dispositivos implements Encendido {
         this.encendido = false;
     }
 
-    // @Override
-    // public String toString() {
+    @Override
+    public String toString() {
 
-    //     return "Ordenador : " + marca + " RAM" + ram + " Procesador " + procesador + " Discos " + disco + " Software "
-    //             + programa + " Encedido " + encendido;
-    // }
+        return "Ordenador : " + marca + " RAM" + ram + " Procesador " + procesador + " Discos " + disco + " Software "
+                + programa + " Encedido " + encendido;
+    }
 
     public void encender() {
         encendido = true;
