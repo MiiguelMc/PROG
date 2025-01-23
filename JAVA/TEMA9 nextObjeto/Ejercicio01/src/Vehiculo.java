@@ -9,10 +9,9 @@ public abstract class Vehiculo {
 
     }
 
-public String toString() {
-    
-    return  marca +" "+ matricula + " " +daños ;
-}
+    public String toString() {
 
+        return marca + " " + matricula + " " + daños;
+    }
 
 }
