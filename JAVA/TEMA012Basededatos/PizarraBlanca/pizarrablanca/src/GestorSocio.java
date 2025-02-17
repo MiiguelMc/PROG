@@ -105,7 +105,7 @@ public class GestorSocio implements CRUD {
                 int estatura = querySet.getInt("estatura");
                 int edad = querySet.getInt("edad");
                 String localidad = querySet.getString("localidad");
-                result = new Socio(socioID, nombre,estatura, edad, localidad));
+                result = new Socio(socioID, nombre,estatura, edad, localidad);
             }
             return result;
         } catch (Exception e) {
