@@ -1,20 +1,22 @@
-<%-- index.jsp (proyecto PasoDeCadena) --%>
+<%-- index.jsp (proyecto Animales) --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Paso de cadena</title>
+        <title>Animales</title>
     </head>
     <body>
-        <h1>Pasando una cadena de caracteres</h1>
-        <form method="post" action="frase.jsp">
-            Introduzca el nombre de una fruta:
-            <input type="text" name="cadenaIntro">
-            <br>
-                        Introduzca el nombre de Perro:
-            <input type="text" name="Hola">
-            <input type="submit" value="OK">
+        <form method="post" action="animales.jsp">
+            Seleccione animal a visualizar
+            <select name="animal">
+                <option>Gato</option>
+                <option>Caracol</option>
+            </select>
+            </br>
+            Número de animales <input type="text" name="numero" size="3">
+            </br>
+            <input type="submit">
         </form>
     </body>
 </html>
