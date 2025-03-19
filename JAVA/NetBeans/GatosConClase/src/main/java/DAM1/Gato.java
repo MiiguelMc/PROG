@@ -20,7 +20,7 @@ public class Gato {
 
     @Override
     public String toString() {
-        return "<img src='" + imagen + "' width='80'>Hola, soy " + nombre + "<br>";
+        return "<img src='' width='80'>Hola, soy " + nombre + "<br>";
     }
 
     public String maulla() {

@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1> Pide la comida Sana</h1>
+        <% %>
+        <div>
+            "<img src='" + imagen + "' width='80'>Hola, soy " + nombre + "<br>"
+        </div>
     </body>
 </html>
