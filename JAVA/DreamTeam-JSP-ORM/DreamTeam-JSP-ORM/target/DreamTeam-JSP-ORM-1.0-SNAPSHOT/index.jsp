@@ -1,11 +1,10 @@
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="pool.ConnectionPool"%>
+<% //Importar clases necesarias %>
 <%@page import="socios.Socio"%>
+<%@page import="pool.ConnectionPool"%>
 <%@page import="socios.GestorSocios"%>
+<%@page import="java.sql.Connection"%>
+
+<%@page import= "java.util.ArrayList"%>;
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -26,22 +25,22 @@
             <div class="panel panel-primary">
                 <div class="panel-heading text-center"><h2>Club de Baloncesto</h2></div>
                 <%
-                    String url = "jdbc:mysql://localhost:3306/baloncesto";
-                    String usuario = "root";
-                    String contrasena ="";
-                    
-                    ConnectionPool pool = new ConnectionPool(url,usuario,contrasena);
-                    GestorSocios gestor = new GestorSocios(pool.getConnection());
-                    ArrayList<Socio> socios = null;
+                    //Configuración de la conexión a la base de datos
+                    String url = "jdbc:mariadb://localhost:3306/baloncesto";
+                    String user = "root";
+                    String password = "";
+                    //Instanciar ConnectionPool y GestorSocios
+                    ConnectionPool conex = new ConnectionPool(url, user, password);
+                    GestorSocios miGestorSocio = new GestorSocios(conex.getConnection());
+                    //Declarar un ArrayList de Socio e inicializarlo a null
+                    ArrayList<Socio> miArray = null;
+                    //Realizar consulta a través del gestor (try-catch) y comprobar resultado (error si la lista está vacía)
                     try {
-                        socios = gestor.requestAll("nombre ASC") ;
-                        if (socios.isEmpty()) {
-                            out.println("<p class='text-danger text-center'>No hay socios registrados.</p>");
-                        }
-                    } catch (Exception e) {
-                        out.println("<p class='text-danger text-center'>Error al obtener la lista de socios.</p>");
-                        e.printStackTrace();
-                    }
+                        miArray = miGestorSocio.requestAll("socioID ASC");
+                        if (miArray.isEmpty()) {
+                            throw new Exception("Esta base de datos no tiene socios");
+                        } else {
+
                 %>
                 <table class="table table-striped">
                     <tr><th>Nº de socio</th><th>Nombre</th><th>Estatura</th><th>Edad</th><th>Localidad</th><th></th><th></th></tr>
@@ -53,38 +52,45 @@
                             <td><input type="text" name="localidad" size="20"></td>
                             <td><button type="submit" value="Añadir" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Añadir</button></td><td></td></tr>           
                     </form>
-                    <%
-                        
-                            for (Socio socio : socios) {
-                        
+                    <%                        //Si la lista no está vacía, recorrerla e imprimir sus elementos en filas de la tabla
+                        for (Socio socios : miArray) {
+                            int socioID = socios.getId();
+                            String nombre = socios.getNombre();
+                            int estatura = socios.getEstatura();
+                            int edad = socios.getEdad();
+                            String localidad = socios.getLocalidad();
+                            out.println("<tr><td>"+socioID+"</td><td>"+nombre+"</td><td>"+estatura+"</td><td>"+edad+"</td><td>"+localidad+"</td>");
                     %>
-                    <tr>
-                        <td><%= socio.getId() %></td>
-                        <td><%= socio.getNombre() %></td>
-                        <td><%= socio.getEstatura() %></td>
-                        <td><%= socio.getEdad() %></td>
-                        <td><%= socio.getLocalidad() %></td>
-                        <td>
-                            <form method="get" action="modificaSocio.jsp">
-                                <input type="hidden" name="socioID" value="<%= socio.getId() %>">
-                                <input type="hidden" name="nombre" value="<%= socio.getNombre() %>">
-                                <input type="hidden" name="estatura" value="<%= socio.getEstatura() %>">
-                                <input type="hidden" name="edad" value="<%= socio.getEdad() %>">
-                                <input type="hidden" name="localidad" value="<%= socio.getLocalidad() %>">
-                                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span> Modificar</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form method="get" action="borraSocio.jsp">
-                                <input type="hidden" name="socioID" value="<%= socio.getId() %>"/>
-                                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
+                    <td>
+                        <!-- TODO: Introducir los datos de cada socio al formulario asociado al botón modificar.-->
+                        <form method="get" action="modificaSocio.jsp">
+                            <input type="hidden" name="socioID" value="<%=socioID%>">
+                            <input type="hidden" name="nombre" value="<%= nombre%>">
+                            <input type="hidden" name="estatura" value="<%= estatura%>">
+                            <input type="hidden" name="edad" value="<%= edad%>">
+                            <input type="hidden" name="localidad" value="<%=localidad%>">
+                            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span> Modificar</button>
+                        </form>
+                    </td>
+                    <td>
+                        <!-- Introducir el ID de cada socio al formulario asociado al botón eliminar.  -->
+                        <form method="get" action="borraSocio.jsp">
+                            <input type="hidden" name="socioID" value="<%=socioID%>"/>
+                            <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
+                        </form>
+                    </td></tr>
                     <%
+                                //Cerrar bucle, cerrar else, bloque catch, cerrar conexiones del pool
                             }
-                        
-                    %>
+                        }
+                    } catch (Exception e) {
+                        %><div><%
+                            out.println(e.getMessage());%></div><%
+                            } finally {
+                                conex.closeAll();
+                            }
+                        %>
+
                 </table>
             </div>
             <div class="text-center">&copy; DreamTeam - JSP - ORM</div>

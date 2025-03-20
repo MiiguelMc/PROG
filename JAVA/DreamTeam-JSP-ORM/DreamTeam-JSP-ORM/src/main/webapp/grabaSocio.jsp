@@ -1,6 +1,7 @@
 <%@page import="pool.ConnectionPool"%>
 <%@page import="socios.Socio"%>
 <%@page import="socios.GestorSocios"%>
+<%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,16 +17,31 @@
     </head>
     <body>
         <%
-            // TODO: Configuración de la conexión a la base de datos
-
+            String url = "jdbc:mariadb://localhost:3306/baloncesto";
+            String usuario = "root";
+            String contrasena = "";
             // TODO: Instanciar ConnectionPool y GestorSocios
-            
+            ConnectionPool pool = new ConnectionPool(url, usuario, contrasena);
+            GestorSocios gestor = new GestorSocios(pool.getConnection());
             // TODO: Establecer la codificación de caracteres de la petición a UTF-8
-            
+            request.setCharacterEncoding("UTF-8");
             // TODO: Crear socio a través del gestor (try-catch) y comprobar resultado (si verdadero, mostrar mensaje de éxito)
-            
+            try {
+                int socioID = Integer.valueOf(request.getParameter("socioID"));
+                String nombre = request.getParameter("nombre");
+                int estatura = Integer.valueOf(request.getParameter("estatura"));
+                int edad = Integer.valueOf(request.getParameter("edad"));
+                String localidad = request.getParameter("localidad") ;
+                
+                Socio misocio = new Socio(socioID,nombre,estatura,edad,localidad);
+                if(gestor.create(misocio)){
+                %><div><%out.print("Has creado a un socio ");%></div><%
+            }
+            } catch (Exception e) {
+                %><div><%out.print("Has creado a un error ");%></div><%
+            }
             // TODO: Cerrar las conexiones del pool  
-            
+ pool.closeAll();
         %>
         <br>
         <a href="index.jsp" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span> Página principal</button>

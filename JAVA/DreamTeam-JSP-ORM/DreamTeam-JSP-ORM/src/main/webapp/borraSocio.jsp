@@ -9,16 +9,24 @@
     </head>
     <body>
         <%
-            // TODO: Configuración de la conexión a la base de datos
-
+            String url = "jdbc:mariadb://localhost:3306/baloncesto";
+            String usuario = "root";
+            String contrasena = "";
             // TODO: Instanciar ConnectionPool y GestorSocios
-            
+            ConnectionPool pool = new ConnectionPool(url, usuario, contrasena);
+            GestorSocios gestor = new GestorSocios(pool.getConnection());
             // TODO: Establecer la codificación de caracteres de la petición a UTF-8
-            
+            request.setCharacterEncoding("UTF-8");
             // TODO: Realizar borrado a través del gestor (try-catch) y comprobar resultado (si verdadero, mostrar mensaje de éxito)
-            
-            // TODO: Cerrar las conexiones del pool                  
+            try {
+                int socioID = Integer.valueOf(request.getParameter("socioID"));
+                gestor.delete(socioID);
+            } catch (Exception e) {
+        %><div><%out.print("Has eliminado a un error ");%></div><%
 
+            }
+            // TODO: Cerrar las conexiones del pool                  
+            pool.closeAll();
         %>
         <script>document.location = "index.jsp"</script> 
     </body>
